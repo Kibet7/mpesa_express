@@ -19,7 +19,7 @@ MPESA_PASSKEY = "0551f00981117f05d8090a5821a8b802ed61abb16c0986b71b99a21f5df5c72
 CONSUMER_KEY = "CMvrrAzC19NWAK7RHq6v6NAyqxAhKew5wlSGDMnCuYXUUSbU"
 CONSUMER_SECRET = "zV5TM9wJfLaAlGKtMAw9lttAoBe6WanU40q1zFzauSGbSOow5oVSHSkcekGzj1gP"
 MPESA_BASE_URL = "https://api.safaricom.co.ke"  # Live URL
-CALLBACK_URL = "https://fec3-105-161-221-222.ngrok-free.app/mpesa/callback"
+CALLBACK_URL = "https://starlinkpundles.vercel.app"
 
 # Generate M-Pesa Access Token
 def generate_access_token():
