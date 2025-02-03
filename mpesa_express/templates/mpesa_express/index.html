@@ -11,13 +11,15 @@
             text-align: center;
             padding: 50px;
         }
+        h2 {
+            color: #333;
+        }
         .container {
             background: white;
             padding: 30px;
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             display: inline-block;
-            max-width: 500px;
         }
         .button {
             display: block;
@@ -36,14 +38,20 @@
         .button:hover {
             background: #218838;
         }
+        .read-more {
+            color: blue;
+            cursor: pointer;
+            text-decoration: underline;
+        }
         .description {
-            margin-top: 20px;
+            display: none;
             text-align: left;
+            margin-top: 10px;
         }
         .footer {
-            margin-top: 40px;
+            margin-top: 20px;
             font-size: 14px;
-            color: #555;
+            color: #666;
         }
     </style>
     <script>
@@ -88,6 +96,18 @@
             }
             return cookieValue;
         }
+
+        function toggleDescription() {
+            let description = document.getElementById("description");
+            let readMore = document.getElementById("readMore");
+            if (description.style.display === "none") {
+                description.style.display = "block";
+                readMore.innerText = "Read Less";
+            } else {
+                description.style.display = "none";
+                readMore.innerText = "Read More";
+            }
+        }
     </script>
 </head>
 <body>
@@ -96,17 +116,15 @@
         <button class="button" onclick="initiateMpesaPayment(200)">7 Days - 10GB (Ksh 200)</button>
         <button class="button" onclick="initiateMpesaPayment(350)">21 Days - 50GB (Ksh 350)</button>
         <button class="button" onclick="initiateMpesaPayment(400)">40 Days - Unlimited (Ksh 400)</button>
-        
-        <div class="description">
-            <h3>About Starlink Bundles in Kenya</h3>
-            <p>Starlink has revolutionized internet access in Kenya, offering high-speed satellite connectivity
-               to remote and urban areas. With flexible bundles tailored to various needs, users can enjoy
-               seamless browsing, streaming, and online work.</p>
-               <p>for assistance Contact us at: <a href="mailto:Helpmaralucky@gmail.com">Helpmaralucky@gmail.com</a></p>
 
+        <p class="read-more" id="readMore" onclick="toggleDescription()">Read More</p>
+        <div class="description" id="description">
+            <p><strong>Starlink Bundles in Kenya:</strong> Starlink has recently introduced affordable high-speed internet options in Kenya, providing reliable satellite-based internet for both urban and rural areas. These bundles allow users to enjoy seamless connectivity for work, entertainment, and business.</p>
         </div>
     </div>
-    
-    <div class="footer">&copy; 2025 Starlink Kenya. All Rights Reserved.</div>
+
+    <div class="footer">
+        <p>Contact us at: <a href="mailto:Helpmaralucky@gmail.com">Helpmaralucky@gmail.com</a></p>
+    </div>
 </body>
 </html>
