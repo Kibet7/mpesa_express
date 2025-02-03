@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "builds": [
+    { "src": "mpesa_express/wsgi.py", "use": "@vercel/python" },
+    { "src": "staticfiles/**", "use": "@vercel/static" }
+  ],
+  "routes": [
+    { "src": "/static/(.*)", "dest": "/staticfiles/$1" },
+    { "src": "/(.*)", "dest": "mpesa_express/wsgi.py" }
+  ]
+}
