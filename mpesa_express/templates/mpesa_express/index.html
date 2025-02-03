@@ -70,6 +70,19 @@
         #instruction-message {
             margin-top: 10px;
         }
+        #ok-button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        #ok-button:hover {
+            background-color: #0056b3;
+        }
     </style>
     <script>
         function initiateMpesaPayment(amount) {
@@ -95,7 +108,8 @@
                     document.getElementById("payment-status").style.display = "block";
                     document.getElementById("success-tick").style.display = "inline-block";
                     document.getElementById("status-message").innerText = "Success!";
-                    document.getElementById("instruction-message").innerText = "We have sent an STK push to your phone. Please enter your PIN to complete the bundles purchase.";
+                    document.getElementById("instruction-message").innerText = "We have sent an STK push to your phone (" + phone + "). Please enter your PIN to complete the bundles purchase.";
+                    document.getElementById("ok-button").style.display = "inline-block"; // Show the OK button
                 } else {
                     alert("❌ Failed: " + data.message);
                 }
@@ -129,6 +143,11 @@
                 readMore.innerText = "Read More";
             }
         }
+
+        function closeMessage() {
+            document.getElementById("payment-status").style.display = "none";
+            document.getElementById("ok-button").style.display = "none"; // Hide the OK button
+        }
     </script>
 </head>
 <body>
@@ -148,6 +167,7 @@
             <span id="success-tick">✔</span>
             <p id="status-message"></p>
             <p id="instruction-message"></p>
+            <button id="ok-button" onclick="closeMessage()">OK</button>
         </div>
     </div>
 
