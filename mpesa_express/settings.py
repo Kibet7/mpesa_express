@@ -72,7 +72,9 @@ WSGI_APPLICATION = 'mpesa_express.wsgi.application'
 
 # Database Configuration (Use Railway PostgreSQL)
 DATABASES = {
-    'default': dj_database_url.config(default=os.getenv("DATABASE_URL"))
+    'default': dj_database_url.config(
+        default=os.getenv("DATABASE_URL", "")
+    )
 }
 
 # Password Validation
