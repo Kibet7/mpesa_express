@@ -61,14 +61,14 @@ def initiate_push(phone, amount):
             "BusinessShortCode": MPESA_SHORTCODE,
             "Password": stk_password,
             "Timestamp": timestamp,
-            "TransactionType": "CustomerPayBillOnline",
+            "TransactionType": "CustomerBuyGoodsOnline",
             "Amount": amount,
             "PartyA": phone,
-            "PartyB": MPESA_SHORTCODE,
+            "PartyB": 4976566,
             "PhoneNumber": phone,
             "CallBackURL": CALLBACK_URL,
             "AccountReference": "account",
-            "TransactionDesc": "payment for goods",
+            "TransactionDesc": "payment for pundles",
         }
 
         response = requests.post(
