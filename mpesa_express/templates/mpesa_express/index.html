@@ -53,6 +53,23 @@
             font-size: 14px;
             color: #666;
         }
+        #payment-status {
+            display: none;
+            text-align: left;
+            margin-top: 20px;
+        }
+        #success-tick {
+            color: green;
+            font-size: 24px;
+            display: inline-block;
+        }
+        #status-message {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        #instruction-message {
+            margin-top: 10px;
+        }
     </style>
     <script>
         function initiateMpesaPayment(amount) {
@@ -74,7 +91,11 @@
             .then(response => response.json())
             .then(data => {
                 if (data.status === "success") {
-                    alert("✅ STK Push sent successfully. Check your phone.");
+                    // Show success message with tick and instructions
+                    document.getElementById("payment-status").style.display = "block";
+                    document.getElementById("success-tick").style.display = "inline-block";
+                    document.getElementById("status-message").innerText = "Success!";
+                    document.getElementById("instruction-message").innerText = "We have sent an STK push to your phone. Please enter your PIN to complete the bundles purchase.";
                 } else {
                     alert("❌ Failed: " + data.message);
                 }
@@ -120,6 +141,13 @@
         <p class="read-more" id="readMore" onclick="toggleDescription()">Read More</p>
         <div class="description" id="description">
             <p><strong>Starlink Bundles in Kenya:</strong> Starlink has recently introduced affordable high-speed internet options in Kenya, providing reliable satellite-based internet for both urban and rural areas. These bundles allow users to enjoy seamless connectivity for work, entertainment, and business.</p>
+        </div>
+
+        <!-- Payment status section -->
+        <div id="payment-status">
+            <span id="success-tick">✔</span>
+            <p id="status-message"></p>
+            <p id="instruction-message"></p>
         </div>
     </div>
 
