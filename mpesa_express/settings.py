@@ -2,30 +2,28 @@ from pathlib import Path
 import os
 import dj_database_url
 
-# Build paths inside the project
+# Base Directory
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# SECURITY WARNING: Keep the secret key used in production secret!
-SECRET_KEY = os.getenv("SECRET_KEY", "django-insecure-pe58eu#rxut2+#1ni=*5whm0ty)+048-@k!cpuh$=*dv7u8$77")
+# Security Keys
+SECRET_KEY = os.getenv("SECRET_KEY", "your-default-secret-key")
 
-# SECURITY WARNING: Don't run with debug turned on in production!
 DEBUG = os.getenv("DEBUG", "False") == "True"
 
-# Allowed Hosts (Include Vercel domain)
+# Allowed Hosts (Update with your Railway App URL)
 ALLOWED_HOSTS = [
     "127.0.0.1",
     "localhost",
-    ".vercel.app",
-    ".now.sh",  # (Legacy) Vercel domain
+    ".railway.app",  # Allow Railway hosting
 ]
 
-# Trusted origins for CSRF
+# CSRF Trusted Origins
 CSRF_TRUSTED_ORIGINS = [
-    "https://*.vercel.app",
+    "https://*.railway.app",
     "http://localhost:8000",
 ]
 
-# Installed Applications
+# Installed Apps
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -34,7 +32,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'mpesa_express',
-    'whitenoise.runserver_nostatic',  # Whitenoise for serving static files
+    'whitenoise.runserver_nostatic',  # WhiteNoise for static files
 ]
 
 # Middleware
@@ -72,9 +70,9 @@ TEMPLATES = [
 # WSGI Application
 WSGI_APPLICATION = 'mpesa_express.wsgi.application'
 
-# Database Configuration (Use PostgreSQL on Vercel)
+# Database Configuration (Use Railway PostgreSQL)
 DATABASES = {
-    'default': dj_database_url.config(default='sqlite:///' + str(BASE_DIR / 'db.sqlite3'))
+    'default': dj_database_url.config(default=os.getenv("DATABASE_URL"))
 }
 
 # Password Validation
@@ -91,7 +89,7 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_TZ = True
 
-# Static Files (CSS, JavaScript, Images)
+# Static Files
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
