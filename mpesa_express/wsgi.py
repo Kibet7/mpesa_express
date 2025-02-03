@@ -14,3 +14,4 @@ from django.core.wsgi import get_wsgi_application
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'mpesa_express.settings')
 
 application = get_wsgi_application()
+app = application

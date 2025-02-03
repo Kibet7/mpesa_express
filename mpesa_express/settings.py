@@ -8,20 +8,25 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Security Keys
 SECRET_KEY = os.getenv("SECRET_KEY", "your-default-secret-key")
 
-DEBUG = os.getenv("DEBUG", "False") == "True"
+DEBUG = False
+
 
 # Allowed Hosts (Update with your Railway App URL)
 ALLOWED_HOSTS = [
     "127.0.0.1",
     "localhost",
-    ".railway.app",  # Allow Railway hosting
+    ".vercel.app",
+    "now.sh",
+    ".payments-production-a843.up.railway.app",  # Allow Railway hosting
 ]
 
 # CSRF Trusted Origins
 CSRF_TRUSTED_ORIGINS = [
-    "https://*.railway.app",
+    "https://payments-production-a843.up.railway.app",
     "http://localhost:8000",
 ]
+
+
 
 # Installed Apps
 INSTALLED_APPS = [
@@ -72,9 +77,14 @@ WSGI_APPLICATION = 'mpesa_express.wsgi.application'
 
 # Database Configuration (Use Railway PostgreSQL)
 DATABASES = {
-    'default': dj_database_url.config(
-        default=os.getenv("DATABASE_URL", "")
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD':'vZUWWWqFfOjubhJkPcewuRhosswUHkQX',
+        'HOST':'autorack.proxy.rlwy.net',
+        'PORT':'23142',
+    }
 }
 
 # Password Validation
