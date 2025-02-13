@@ -17,7 +17,7 @@ ALLOWED_HOSTS = [
     "localhost",
     ".vercel.app",
     "now.sh",
-    ".payments-production-a843.up.railway.app",  # Allow Railway hosting
+    "www.starrlnk.shop",  # Allow Railway hosting
 ]
 
 # CSRF Trusted Origins
